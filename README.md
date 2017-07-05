@@ -67,7 +67,7 @@ public class MyApplication extends Application {
         email.setSender("tfish0766@163.com");//发送人邮箱
         email.setSendPassword("test1234");//邮箱的客户端授权码，注意不是邮箱密码
         email.setSMTPHost("smtp.163.com");//SMTP地址
-        email.setPort("25");//SMTP 端口
+        email.setPort("465");//SMTP 端口
         LogUtil.getInstance().setUploadType(email);
     }
 }
