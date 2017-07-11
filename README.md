@@ -31,7 +31,7 @@ allprojects {
 添加依赖
 ``` java
 dependencies {
-    compile 'com.github.yogkin:LogUtil:1.0.0'
+    compile 'com.github.yogkin:LogUtil:1.0.1'
 }
 ```
 
@@ -52,6 +52,8 @@ public class MyApplication extends Application {
                 .setLogDir(getApplicationContext(), "sdcard/" + this.getString(this.getApplicationInfo().labelRes) + "/")//定义路径为：sdcard/[app name]/
                 .setWifiOnly(true)//设置只在Wifi状态下上传，设置为false为Wifi和移动网络都上传
                 .setLogLeve(LogUtil.LOG_LEVE_INFO)//设置为日常日志也会上传
+                 //.setLogDebugModel(true) //设置是否显示日志信息
+                //.setLogContent(LogUtil.LOG_LEVE_CONTENT_NULL)  //设置是否在邮件内容显示附件信息文字
                 .setLogSaver(new CrashWriter(getApplicationContext()))//支持自定义保存崩溃信息的样式
                 //.setEncryption(new AESEncode()) //支持日志到AES加密或者DES加密，默认不开启
                 .init(getApplicationContext());
