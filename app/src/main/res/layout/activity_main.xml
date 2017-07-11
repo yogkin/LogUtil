@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_margin="10dp"
-        android:text="自动崩溃" />
+        android:text="上传日志" />
 
     <Button
         android:id="@+id/button2"
