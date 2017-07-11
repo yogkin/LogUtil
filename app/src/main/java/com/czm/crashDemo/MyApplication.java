@@ -24,6 +24,8 @@ public class MyApplication extends Application {
                 .setWifiOnly(false)//设置只在Wifi状态下上传，设置为false为Wifi和移动网络都上传
                 .setLogSaver(new CrashWriter(getApplicationContext()))//支持自定义保存崩溃信息的样式
                 .setLogLeve(LogUtil.LOG_LEVE_INFO)
+                //.setLogDebugModel(true) //设置是否显示日志信息
+                //.setLogContent(LogUtil.LOG_LEVE_CONTENT_NULL)  //设置是否在邮件内容显示附件信息文字
                 //.setEncryption(new AESEncode()) //支持日志到AES加密或者DES加密，默认不开启
                 .init(getApplicationContext());
         initEmailReporter();

@@ -82,9 +82,12 @@ public class UploadService extends IntentService {
         //把日志文件压缩到压缩包中
         if (CompressUtil.zipFileAtPath(logfolder.getAbsolutePath(), zipfile.getAbsolutePath())) {
             Logs.d("把日志文件压缩到压缩包中 ----> 成功");
-            for (File crash : crashFileList) {
-                content.append(FileUtil.getText(crash));
-                content.append("\n");
+
+            if (checkLogContent()== LogUtil.LOG_LEVE_CONTENT) {
+                for (File crash : crashFileList) {
+                    content.append(FileUtil.getText(crash));
+                    content.append("\n");
+                }
             }
             LogUtil.getInstance().getUpload().sendFile(zipfile, content.toString(), new ILogUpload.OnUploadFinishedListener() {
                 @Override
@@ -129,5 +132,14 @@ public class UploadService extends IntentService {
     public int checkLogLeve() {
 
         return LogUtil.getInstance().getLogLeve();
+    }
+
+    /**
+     * 设置是否把信息记录在日志内容中
+     * @return 0 设置上传日志内容为空,1 设置上传日志信息为crash
+     */
+    public int checkLogContent() {
+
+        return LogUtil.getInstance().getLogContent();
     }
 }

@@ -11,6 +11,7 @@ import com.czm.library.save.ISave;
 import com.czm.library.save.imp.LogWriter;
 import com.czm.library.upload.ILogUpload;
 import com.czm.library.upload.UploadService;
+import com.czm.library.util.Logs;
 import com.czm.library.util.NetUtil;
 
 /**
@@ -63,6 +64,23 @@ public class LogUtil {
      * 设置默认为只记录crash日志
      */
     private int mLogLeve = LOG_LEVE_ERROR;
+
+
+    /**
+     * 设置上传日志信息为所有
+     */
+    public static final int LOG_LEVE_CONTENT = 1;
+
+    /**
+     * 设置上传日志信息为crash
+     */
+    public static final int LOG_LEVE_CONTENT_NULL = 0;
+
+
+    /**
+     * 设置上传日志内容为
+     */
+    private int mLogContent;
 
 
     private LogUtil() {
@@ -133,6 +151,26 @@ public class LogUtil {
 
     public int getLogLeve(){
         return mLogLeve;
+    }
+
+    public LogUtil setLogContent(int logContent){
+
+        if (logContent==LOG_LEVE_CONTENT) {
+            this.mLogContent = LOG_LEVE_CONTENT;
+        }else {
+            this.mLogContent = LOG_LEVE_CONTENT_NULL;
+        }
+
+        return this;
+    }
+
+    public int getLogContent(){
+        return mLogContent;
+    }
+
+    public  LogUtil setLogDebugModel(boolean isDebug){
+        Logs.isDebug = isDebug;
+        return this;
     }
 
 
