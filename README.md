@@ -8,7 +8,7 @@
 | ------ | ------ |
 |自定义上传文件内容|默认crash信息，你可以选择自定义的信息|
 |自定义日志保存路径 |默认保存在Android/data/com.xxxx.xxxx/log中|
-|自定义日志缓存大小|默认大小为30M，超出后会自动清空文件夹|
+|自定义日志缓存大小|默认大小为50M，超出后会自动清空文件夹|
 |支持多种上传方式|目前支持邮件上传与HTTP上传，会一并把文件夹下的所有日志打成压缩包作为附件上传|
 |日志加密保存|提供AES，DES两种加密解密方式支持，默认不加密|
 |日志按天保存|目前崩溃日志和Log信息是按天保存，你可以继承接口来实现更多的保存样式|
@@ -36,7 +36,7 @@ dependencies {
 ```
 
 ## 初始化
-在自定义Application文件加入以下几行代码即可，默认使用email发送。如果您只需要在本地存储崩溃信息，不需要发送出去，请把initEmailReport（）删掉即可。
+在自定义Application文件加入以下几行代码即可，你可以设置需要上传的信息，默认为crash信息。如果你需要把自定义记录信息上传到服务器，情况下面代码介绍。
 ``` java
 public class MyApplication extends Application {
 
@@ -72,21 +72,7 @@ public class MyApplication extends Application {
         email.setPort("465");//SMTP 端口
         LogUtil.getInstance().setUploadType(email);
     }
-}
-
-```
-
-## 上传
-在任意地方，调用以下方法即可，崩溃发生后，会在下一次App启动的时候使用Service异步打包日志，然后上传日志，发送成功与否，Service都会自动退出释放内存
-``` java
-LogUtil.getInstance().upload(context);
-```
-
-## 发往服务器
-
-如果您有自己的服务器，想往服务器发送本地保存的日志文件，而不是通过邮箱发送。请使用以下方法替换initEmailReporter方法
-``` java
-
+    
     /**
      * 使用HTTP发送日志
      */
@@ -100,20 +86,21 @@ LogUtil.getInstance().upload(context);
         http.setBodyParam("message");//内容
         LogUtil.getInstance().setUploadType(http);
     }
+}
+
 ```
+
+## 上传
+在任意地方，调用以下方法即可，崩溃发生后，会在下一次App启动的时候使用Service异步打包日志，然后上传日志，发送成功与否，Service都会自动退出释放内存
+``` java
+LogUtil.getInstance().upload(context);
+```
+
+
 ## 保存Log到本地
 使用以下方法，打印Log的同时，把Log信息保存到本地（保存的时候会附带线程名称，线程id，打印时间），并且随同崩溃日志一起，发送到特定的邮箱或者服务器上。帮助开发者还原用户的操作路径，更好的分析崩溃产生的原因
 ``` java
 LogWriter.writeLog("czm", "打Log测试！！！！");
 ```
-
-
-## 关于使用邮件上传的注意事项
-- 强烈建议使用163邮箱作为发送崩溃的邮箱，并且此邮箱务必要开启SMTP服务，如下图所示，才能发送邮件成功！
-![enter image description here](http://ww1.sinaimg.cn/mw690/691cc151gw1f5zafbkamrj20fl05kaa8.jpg)
-- 邮箱的密码，请输入163邮箱的客户端授权码，而不要输入邮箱的登录密码
-- 请不要使用QQ邮箱作为发件人的邮箱，因为QQ邮箱的多重验证原因，并不支持这种形式的邮件发送
-- 如果你需要自动提交崩溃日志到GitHub中，您需要使用Gmail邮箱作为收件人邮箱
-- 提供以下测试邮箱给大家体验，此邮箱可以发送邮箱   
 
 参考LogReport项目
