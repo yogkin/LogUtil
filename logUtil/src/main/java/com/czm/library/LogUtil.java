@@ -7,12 +7,16 @@ import android.text.TextUtils;
 
 import com.czm.library.crash.CrashHandler;
 import com.czm.library.encryption.IEncryption;
+import com.czm.library.save.BaseSaver;
 import com.czm.library.save.ISave;
 import com.czm.library.save.imp.LogWriter;
 import com.czm.library.upload.ILogUpload;
 import com.czm.library.upload.UploadService;
+import com.czm.library.util.FileUtil;
 import com.czm.library.util.Logs;
 import com.czm.library.util.NetUtil;
+
+import java.io.File;
 
 /**
  * 日志崩溃管理框架
@@ -200,6 +204,19 @@ public class LogUtil {
 
     public long getCacheSize() {
         return mCacheSize;
+    }
+
+
+    /**
+     * 检查文件夹是否超出缓存大小，超出则会删除该目录下的所有文件
+     *
+     * @param dir 需要检查大小的文件夹
+     * @return 返回是否超过大小，true为是，false为否
+     */
+
+    public synchronized boolean checkCacheSizeAndDelOldestFile(File dir) {
+        long dirSize = FileUtil.folderSize(dir);
+        return dirSize >= LogUtil.getInstance().getCacheSize() && FileUtil.deleteOldestFile(new File(BaseSaver.LogFolder));
     }
 
     /**

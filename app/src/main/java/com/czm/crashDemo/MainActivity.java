@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.czm.library.LogUtil;
-import com.czm.library.save.imp.CrashWriter;
 import com.czm.library.save.imp.LogWriter;
 import com.czm.library.util.FileUtil;
 
@@ -19,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        LogUtil.getInstance().upload(this);
         setUpListener();
 
     }
@@ -40,7 +38,24 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LogWriter.writeLog(TAG, "打Log测试！！！！");
+                LogWriter.writeLog(TAG, "打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！" +
+                        "打Log测试！！！！打Log测试！！！！打Log测试！！！！" +
+                        "打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！" +
+                        "" +
+                        "打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！" +
+                        "打Log测试！！！！打Log测试！！！！打Log测试！！！！" +
+                        "" +
+                        "打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！" +
+                        "打Log测试！！！！打Log测试！！！！打Log测试！！！！" +
+                        "打Log测试！！！！打Log测试！！！！打Log测试！！！！" +
+                        "打Log测试！！！！打Log测试！！！！" +
+                        "" +
+                        "打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！" +
+                        "打Log测试！！！！打Log测试！！！！打Log测试！！！！" +
+                        "" +
+                        "打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！打Log测试！！！！" +
+                        "" +
+                        "");
             }
         });
 

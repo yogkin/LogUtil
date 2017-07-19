@@ -112,9 +112,8 @@ public class UploadService extends IntentService {
         }
     }
 
-
     /**
-     * 检查文件夹是否超出缓存大小
+     * 检查文件夹是否超出缓存大小，超出则会删除该目录下的所有文件
      *
      * @param dir 需要检查大小的文件夹
      * @return 返回是否超过大小，true为是，false为否
@@ -124,6 +123,8 @@ public class UploadService extends IntentService {
         long dirSize = FileUtil.folderSize(dir);
         return dirSize >= LogUtil.getInstance().getCacheSize() && FileUtil.deleteDir(dir);
     }
+
+
 
     /**
      * 检测上传日志等级

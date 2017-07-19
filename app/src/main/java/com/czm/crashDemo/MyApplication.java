@@ -19,7 +19,7 @@ public class MyApplication extends Application {
 
     private void initCrashReport() {
         LogUtil.getInstance()
-                .setCacheSize(30 * 1024 * 1024)//支持设置缓存大小，超出后清空
+                .setCacheSize(100 * 1024)//支持设置缓存大小，超出后清空
                 .setLogDir(getApplicationContext(), "sdcard/" + this.getString(this.getApplicationInfo().labelRes) + "/")//定义路径为：sdcard/[app name]/
                 .setWifiOnly(false)//设置只在Wifi状态下上传，设置为false为Wifi和移动网络都上传
                 .setLogSaver(new CrashWriter(getApplicationContext()))//支持自定义保存崩溃信息的样式

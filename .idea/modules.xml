@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LogReport.iml" filepath="$PROJECT_DIR$/LogReport.iml" />
+      <module fileurl="file://D:\AndroidStudioProject\LogUtil\LogReport.iml" filepath="D:\AndroidStudioProject\LogUtil\LogReport.iml" />
       <module fileurl="file://$PROJECT_DIR$/LogUtil.iml" filepath="$PROJECT_DIR$/LogUtil.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/logUtil/logUtil.iml" filepath="$PROJECT_DIR$/logUtil/logUtil.iml" />
-      <module fileurl="file://$PROJECT_DIR$/logUtil/logUtil.iml" filepath="$PROJECT_DIR$/logUtil/logUtil.iml" />
-      <module fileurl="file://$PROJECT_DIR$/logreport/logreport.iml" filepath="$PROJECT_DIR$/logreport/logreport.iml" />
-      <module fileurl="file://$PROJECT_DIR$/logreport/logreport.iml" filepath="$PROJECT_DIR$/logreport/logreport.iml" />
+      <module fileurl="file://D:\AndroidStudioProject\LogUtil\logreport\logreport.iml" filepath="D:\AndroidStudioProject\LogUtil\logreport\logreport.iml" />
     </modules>
   </component>
 </project>

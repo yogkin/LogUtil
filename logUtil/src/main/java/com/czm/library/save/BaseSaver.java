@@ -59,6 +59,9 @@ public abstract class BaseSaver implements ISave {
 
     public static String TimeLogFolder;
 
+
+    public static String LogFolder = LogUtil.getInstance().getROOT() + "/Logs/";
+
     /**
      * 操作日志全名拼接
      */
@@ -216,10 +219,7 @@ public abstract class BaseSaver implements ISave {
     public void writeText(final File logFile, final String content) {
         FileOutputStream outputStream = null;
         try {
-            //long startTime = System.nanoTime();
             String encoderesult = encodeString(content);
-            //long endTime = System.nanoTime();
-            //Logs.d("wenming", "加密耗时为 = ： " + String.valueOf((double) (endTime - startTime) / 1000000) + "ms");
             Logs.d("最终写到文本的Log：\n" + content);
             outputStream = new FileOutputStream(logFile);
             outputStream.write(encoderesult.getBytes("UTF-8"));
@@ -235,6 +235,9 @@ public abstract class BaseSaver implements ISave {
                     e.printStackTrace();
                 }
             }
+
+            //每次写入的最后检测sd卡空间是否够用
+            LogUtil.getInstance().checkCacheSizeAndDelOldestFile(new File(LogUtil.getInstance().getROOT()));
         }
     }
 }

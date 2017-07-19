@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -177,4 +179,26 @@ public class FileUtil {
         return zipfile;
     }
 
+
+    public static boolean deleteOldestFile(File directory)
+    {
+
+        Logs.e("执行了删除旧文件操作");
+        File[] files = directory.listFiles();
+        Arrays.sort(files, new Comparator<File>() {
+            @Override
+            public int compare(File f1, File f2)
+            {
+                return Long.valueOf(f1.lastModified()).compareTo(f2.lastModified());
+            }});
+
+        if (FileUtil.deleteDir(files[0])) {
+            Logs.e("删除旧文件成功");
+            return true;
+        }else {
+            Logs.e("删除旧文件失败");
+            return false;
+
+        }
+    }
 }
