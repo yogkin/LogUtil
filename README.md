@@ -31,7 +31,7 @@ allprojects {
 添加依赖
 ``` java
 dependencies {
-    compile 'com.github.yogkin:LogUtil:1.0.1'
+    compile 'com.github.yogkin:LogUtil:1.0.2'
 }
 ```
 
