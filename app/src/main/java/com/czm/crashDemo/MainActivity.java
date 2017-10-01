@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private void setUpListener() {
         Button button1 = (Button) findViewById(R.id.button1);
         Button button2 = (Button) findViewById(R.id.button2);
