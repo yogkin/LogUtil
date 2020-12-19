@@ -1,6 +1,6 @@
 # DEPRECATED
 
-请使用 [LogReport]https://github.com/wenmingvs/LogReport
+请使用 [LogReport] (https://github.com/wenmingvs/LogReport)
 
 # Android日志上传框架
 
