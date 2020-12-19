@@ -1,3 +1,7 @@
+# DEPRECATED
+
+请使用 [LogReport]https://github.com/wenmingvs/LogReport
+
 # Android日志上传框架
 
 当App崩溃的时，把崩溃信息保存到本地的同时，你只需要几句，就可以实现把崩溃信息上传到你想上传的地方，可以是HTTP，也可以选择上传到你的邮箱。
